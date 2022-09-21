@@ -18,7 +18,6 @@
     "v14"
   ],
   "author": "✨Tolgchu✨#1452",
-  "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2",
     "delay": "^5.0.0",
