@@ -1,0 +1,30 @@
+{
+  "name": "discord.js-v14-template",
+  "version": "1.0.0",
+  "description": "An advanced Discord bot template for discord.js package",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "load": "node load.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "discord.js",
+    "djs",
+    "node",
+    "js",
+    "javascript",
+    "v14"
+  ],
+  "author": "✨Tolgchu✨#1452",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "delay": "^5.0.0",
+    "discord.js": "^14.4.0",
+    "dotenv": "^16.0.2",
+    "fs": "^0.0.1-security",
+    "terminal.xr": "^1.2.3"
+  }
+}
