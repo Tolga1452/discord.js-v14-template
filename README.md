@@ -27,8 +27,8 @@ npm run start
 ```
 and your bot will be online. Your added commands, components and modals should be working as expected.
 
-# Reporting Bugs & Contributing
-You can report bugs [here](https://github.com/Tolga1452/discord.js-v14-template/issues/new) and make pull request [here](https://github.com/Tolga1452/discord.js-v14-template/compare).
+# Feedback & Contributing
+You can report bugs, feature requests etc. [here](https://github.com/Tolga1452/discord.js-v14-template/issues/new) and make pull request [here](https://github.com/Tolga1452/discord.js-v14-template/compare).
 
 # Used Packages
 - [**axios:**](https://www.npmjs.com/package/axios) `v0.27.2`
