@@ -1,3 +1,3 @@
 module.exports = {
-    botId: '646768542942756884'
+    botId: 'bot_id'
 };
