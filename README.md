@@ -7,7 +7,8 @@ git clone https://github.com/Tolga1452/discord.js-v14-template.git
 ```
 
 ## Setup
-Enter your bot token in `.env` file.
+1. Enter your bot token in `.env` file.
+2. Enter your bot ID in `config.js` file.
 
 ## How to use?
 ### 1. Setting Commands, Components and Modals
