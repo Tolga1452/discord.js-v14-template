@@ -24,7 +24,7 @@ const commands = [];
  */
 const guildCommands = {};
 
-readdir('./interactions/commands/slash', (error, files) => { //Slash Commands
+readdir('./interactions/commands/slash', (error, files = []) => { //Slash Commands
     if (error) logger.error(`[CommandLoader/Slash] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[CommandLoader/Slash] Loading ${files.length} slash commands...`);
@@ -49,7 +49,7 @@ readdir('./interactions/commands/slash', (error, files) => { //Slash Commands
     });
 });
 
-readdir('./interactions/commands/user', (error, files) => { //User Commands
+readdir('./interactions/commands/user', (error, files = []) => { //User Commands
     if (error) logger.error(`[CommandLoader/User] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[CommandLoader/User] Loading ${files.length} user commands...`);
@@ -74,7 +74,7 @@ readdir('./interactions/commands/user', (error, files) => { //User Commands
     });
 });
 
-readdir('./interactions/commands/message', (error, files) => { //Message Commands
+readdir('./interactions/commands/message', (error, files = []) => { //Message Commands
     if (error) logger.error(`[CommandLoader/Message] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[CommandLoader/Message] Loading ${files.length} message commands...`);

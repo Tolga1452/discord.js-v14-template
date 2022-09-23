@@ -32,7 +32,7 @@ const interactions = {
     modals: new Collection()
 };
 
-readdir('./interactions/commands/slash', (error, files) => { //Slash Commands
+readdir('./interactions/commands/slash', (error, files = []) => { //Slash Commands
     if (error) logger.error(`[Shard ${shard}] [InterationLoader/SlashCommands] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/SlashCommands] Loading ${files.length} slash commands...`);
@@ -57,7 +57,7 @@ readdir('./interactions/commands/slash', (error, files) => { //Slash Commands
     });
 });
 
-readdir('./interactions/commands/user', (error, files) => { //User Commands
+readdir('./interactions/commands/user', (error, files = []) => { //User Commands
     if (error) logger.error(`[Shard ${shard}] [InterationLoader/UserCommands] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/UserCommands] Loading ${files.length} user commands...`);
@@ -82,7 +82,7 @@ readdir('./interactions/commands/user', (error, files) => { //User Commands
     });
 });
 
-readdir('./interactions/commands/message', (error, files) => { //Message Commands
+readdir('./interactions/commands/message', (error, files = []) => { //Message Commands
     if (error) logger.error(`[Shard ${shard}] [InterationLoader/MessageCommands] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/MessageCommands] Loading ${files.length} message commands...`);
@@ -107,7 +107,7 @@ readdir('./interactions/commands/message', (error, files) => { //Message Command
     });
 });
 
-readdir('./interactions/components/buttons', (error, files) => { //Button Components
+readdir('./interactions/components/buttons', (error, files = []) => { //Button Components
     if (error) logger.error(`[Shard ${shard}] [InterationLoader/ButtonComponents] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/ButtonComponents] Loading ${files.length} button components...`);
@@ -129,7 +129,7 @@ readdir('./interactions/components/buttons', (error, files) => { //Button Compon
     });
 });
 
-readdir('./interactions/components/selectMenus', (error, files) => { //Select Menu Components
+readdir('./interactions/components/selectMenus', (error, files = []) => { //Select Menu Components
     if (error) logger.error(`[Shard ${shard}] [InterationLoader/SelectMenuComponents] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/SelectMenuComponents] Loading ${files.length} select menu components...`);
@@ -151,7 +151,7 @@ readdir('./interactions/components/selectMenus', (error, files) => { //Select Me
     });
 });
 
-readdir('./interactions/modals', (error, files) => { //Modals
+readdir('./interactions/modals', (error, files = []) => { //Modals
     if (error) logger.error(`[Shard ${shard}] [InterationLoader/Modals] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/Modals] Loading ${files.length} modals...`);
