@@ -25,5 +25,13 @@
     "dotenv": "^16.0.2",
     "fs": "^0.0.1-security",
     "terminal.xr": "^1.2.3"
+  },
+  "devDependencies": {
+    "git-cz": "^4.9.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
   }
 }
