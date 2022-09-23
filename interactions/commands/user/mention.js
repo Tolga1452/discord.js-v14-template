@@ -1,4 +1,4 @@
-const { ContextMenuCommandBuilder, UserContextMenuCommandInteraction, ApplicationCommandType } = require("discord.js");
+const { ContextMenuCommandBuilder, UserContextMenuCommandInteraction, ApplicationCommandType, Client } = require("discord.js");
 
 module.exports = {
     //guild: 'guild_id', //if this command is guild specific, enter the guild id here
@@ -9,8 +9,9 @@ module.exports = {
     /**
      * Executes this command
      * @param {UserContextMenuCommandInteraction} interaction
+     * @param {Client} client
      */
-    execute: async (interaction) => {
+    execute: async (interaction, client) => {
         interaction.reply(`<@${interaction.targetId}>`);
     }
 };

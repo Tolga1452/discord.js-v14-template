@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ChatInputCommandInteraction, SlashCommandStringOption, AutocompleteInteraction, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { SlashCommandBuilder, ChatInputCommandInteraction, SlashCommandStringOption, AutocompleteInteraction, ActionRowBuilder, ButtonBuilder, ButtonStyle, Client } = require("discord.js");
 
 module.exports = {
     //guild: 'guild_id', //if this command is guild specific, enter the guild id here
@@ -18,8 +18,9 @@ module.exports = {
     /**
      * Executes this command
      * @param {ChatInputCommandInteraction} interaction
+     * @param {Client} client
      */
-    execute: async (interaction) => {
+    execute: async (interaction, client) => {
         let custom = interaction.options.getString('with');
 
         interaction.reply({
@@ -40,8 +41,9 @@ module.exports = {
     /**
      * If this command have an autocomplete, this will send a respond with recommended options
      * @param {AutocompleteInteraction} interaction
+     * @param {Client} client
      */
-    autocomplete: async (interaction) => {
+    autocomplete: async (interaction, client) => {
         let focused = interaction.options.getFocused(true);
 
         if (focused.name === 'with') {

@@ -185,13 +185,13 @@ client
             let name = interaction.commandName.split(' ')[0];
             let command = interactions.commands.get(name);
 
-            if (command) command.execute(interaction);
+            if (command) command.execute(interaction, client);
             else logger.error(`[Shard ${shard}] [Events/InteractionCreate/Command] ${name} command could not found`);
         } else if (interaction.isAutocomplete()) {
             let name = interaction.commandName.split(' ')[0];
             let command = interactions.commands.get(name);
 
-            if (command) command.autocomplete(interaction);
+            if (command) command.autocomplete(interaction, client);
             else logger.error(`[Shard ${shard}] [Events/InteractionCreate/Autocomplete] ${name} command could not found`);
         } else if (interaction.isMessageComponent()) {
             let args = interaction.customId.split('-');
@@ -202,12 +202,12 @@ client
             if (interaction.isButton()) {
                 let component = interactions.components.buttons.get(id);
 
-                if (component) component.execute(interaction, args);
+                if (component) component.execute(interaction, args, client);
                 else logger.error(`[Shard ${shard}] [Events/InteractionCreate/Button] ${id} button could not found`);
             } else if (interaction.isSelectMenu()) {
                 let component = interactions.components.selectMenus.get(id);
 
-                if (component) component.execute(interaction, args);
+                if (component) component.execute(interaction, args, client);
                 else logger.error(`[Shard ${shard}] [Events/InteractionCreate/SelectMenu] ${id} select menu could not found`);
             };
         } else if (interaction.isModalSubmit()) {
@@ -218,7 +218,7 @@ client
 
             let modal = interactions.modals.get(id);
 
-            if (modal) modal.execute(interaction, args);
+            if (modal) modal.execute(interaction, args, client);
             else logger.error(`[Shard ${shard}] [Events/InteractionCreate/Modal] ${id} modal could not found`);
         };
     });
