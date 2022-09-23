@@ -1,5 +1,5 @@
 const { Axios } = require("axios");
-const { ApplicationCommand, SlashCommandBuilder, ContextMenuCommandBuilder } = require("discord.js");
+const { ApplicationCommand } = require("discord.js");
 const { readdir } = require("fs");
 const Logger = require("terminal.xr");
 const { botId } = require("./config");

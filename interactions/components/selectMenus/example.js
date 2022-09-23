@@ -3,7 +3,7 @@ const { SelectMenuInteraction } = require("discord.js");
 module.exports = {
     id: 'example_select_menu',
     /**
-     * Executes this button
+     * Executes this select menu
      * @param {SelectMenuInteraction} interaction
      * @param {string[]} args
      */
