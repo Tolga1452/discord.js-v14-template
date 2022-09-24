@@ -4,6 +4,7 @@ An advanced Discord bot template for [discord.js](https://www.npmjs.com/package/
 ## Installation
 ```bash
 git clone https://github.com/Tolga1452/discord.js-v14-template.git
+npm install
 ```
 
 ## Setup
