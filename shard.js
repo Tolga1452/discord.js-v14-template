@@ -183,13 +183,21 @@ client
     .on('interactionCreate', async interaction => {
         if (interaction.isCommand()) {
             let name = interaction.commandName.split(' ')[0];
-            let command = interactions.commands.get(name);
+            let guild = interaction.commandGuildId;
+            let command;
+
+            if (guild) command = interactions.guildCommands[guild].get(name);
+            else command = interactions.commands.get(name);
 
             if (command) command.execute(interaction, client);
             else logger.error(`[Shard ${shard}] [Events/InteractionCreate/Command] ${name} command could not found`);
         } else if (interaction.isAutocomplete()) {
             let name = interaction.commandName.split(' ')[0];
-            let command = interactions.commands.get(name);
+            let guild = interaction.commandGuildId;
+            let command;
+
+            if (guild) command = interactions.guildCommands[guild].get(name);
+            else command = interactions.commands.get(name);
 
             if (command) command.autocomplete(interaction, client);
             else logger.error(`[Shard ${shard}] [Events/InteractionCreate/Autocomplete] ${name} command could not found`);
