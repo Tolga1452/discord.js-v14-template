@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "An advanced Discord bot template for discord.js package",
   "main": "bot.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "node bot.js",
     "load": "node load.js"
