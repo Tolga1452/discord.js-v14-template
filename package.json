@@ -7,8 +7,7 @@
     "node": "16.x"
   },
   "scripts": {
-    "start": "node bot.js",
-    "load": "node load.js"
+    "start": "node bot.js"
   },
   "keywords": [
     "discord",
