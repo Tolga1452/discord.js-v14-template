@@ -1,6 +1,6 @@
 //Packages & Helpful Tools
 
-const { Client, GatewayIntentBits, Collection } = require("discord.js");
+const { Client, GatewayIntentBits, Collection, Events } = require("discord.js");
 const { readdir } = require("fs");
 const Logger = require('terminal.xr');
 const { Axios } = require("axios");
@@ -195,7 +195,7 @@ if (shard === 0) (async () => {
 //Events
 
 client
-    .on('interactionCreate', async interaction => {
+    .on(Events.InteractionCreate, async interaction => {
         if (interaction.isCommand()) {
             let name = interaction.commandName.split(' ')[0];
             let guild = interaction.commandGuildId;
