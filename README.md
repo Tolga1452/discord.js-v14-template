@@ -1,5 +1,11 @@
 # discord.js-v14-template
-An advanced Discord bot template for [discord.js](https://www.npmjs.com/package/discord.js) package
+An advanced Discord bot template with example commands for [discord.js](https://www.npmjs.com/package/discord.js) v14
+
+<img src="https://cdn.discordapp.com/attachments/861337826381529108/1047190335215915150/image.png" alt="/hello command" />
+
+<img src="https://cdn.discordapp.com/attachments/861337826381529108/1047190641236520971/image.png" alt="autocomplete" />
+
+<img src="https://cdn.discordapp.com/attachments/861337826381529108/1047190729690198096/image.png" alt="used autocomplete with /hello command" />
 
 ## Installation
 ```bash
