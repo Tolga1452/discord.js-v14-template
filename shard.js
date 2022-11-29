@@ -163,30 +163,30 @@ readdir('./interactions/modals', (error, files = []) => { //Modals
     });
 });
 
-//Slash Command Installer
+//Command Installer
 
 if (shard === 0) (async () => {
-    logger.status('[SlashCommandInstaller] Waiting for loading commands...');
+    logger.status('[CommandInstaller] Waiting for loading commands...');
 
     await wait(5000); //Wait 5 seconds for loading commands
 
     var commands = client.interactions.commands;
     var guildCommands = client.interactions.guildCommands;
 
-    logger.info(`[SlashCommandInstaller] Registering ${commands.size} commands...`);
+    logger.info(`[CommandInstaller] Installing ${commands.size} commands...`);
 
     discordAPI.put(`applications/${botId}/commands`, JSON.stringify(commands.map(command => command.data.toJSON())))
-        .then(() => logger.success('[SlashCommandInstaller] All commands are registered'))
-        //.then(res => logger.debug(`[SlashCommandInstaller] ${JSON.stringify(res.data)}`)) //For Debugging
-        .catch(error => logger.error(`[SlashCommandInstaller] ${error.stack ?? error}`));
+        .then(() => logger.success('[CommandInstaller] All commands are registered'))
+        //.then(res => logger.debug(`[CommandInstaller] ${JSON.stringify(res.data)}`)) //For Debugging
+        .catch(error => logger.error(`[CommandInstaller] ${error.stack ?? error}`));
 
     for (var guild in client.interactions.guildCommands) {
-        logger.info(`[SlashCommandInstaller/Guild_${guild}] Registering ${commands.size} commands...`)
+        logger.info(`[CommandInstaller/Guild_${guild}] Registering ${commands.size} commands...`)
 
         discordAPI.put(`applications/${botId}/guilds/${guild}/commands`, JSON.stringify(guildCommands[guild].map(command => command.data.toJSON())))
-            .then(() => logger.success(`[CommandLoader/Guild_${guild}] All commands are registered`))
-            //.then(res => logger.debug(`[CommandLoader/Guild_${guild}] ${JSON.stringify(res.data)}`)) //For Debugging
-            .catch(error => logger.error(`[CommandLoader/Guild_${guild}] ${error.stack ?? error}`));
+            .then(() => logger.success(`[CommandInstaller/Guild_${guild}] All commands are registered`))
+            //.then(res => logger.debug(`[CommandInstaller/Guild_${guild}] ${JSON.stringify(res.data)}`)) //For Debugging
+            .catch(error => logger.error(`[CommandInstaller/Guild_${guild}] ${error.stack ?? error}`));
 
         await wait(3000); //Wait 3 seconds each guild for rate limits
     };
