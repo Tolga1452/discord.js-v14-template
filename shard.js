@@ -51,7 +51,7 @@ readdir('./interactions/commands/slash', (error, files = []) => { //Slash Comman
             const command = require(`./interactions/commands/slash/${file}`);
 
             if (command.guild) {
-                if (client.interactions.guildCommands[command.guild]) interactions.guildCommands[command.guild].set(command.data.name, command);
+                if (client.interactions.guildCommands[command.guild]) client.interactions.guildCommands[command.guild].set(command.data.name, command);
                 else client.interactions.guildCommands[command.guild] = new Collection().set(command.data.name, command);
             } else client.interactions.commands.set(command.data.name, command);
 
@@ -73,7 +73,7 @@ readdir('./interactions/commands/user', (error, files = []) => { //User Commands
             const command = require(`./interactions/commands/user/${file}`);
 
             if (command.guild) {
-                if (client.interactions.guildCommands[command.guild]) interactions.guildCommands[command.guild].set(command.data.name, command);
+                if (client.interactions.guildCommands[command.guild]) client.interactions.guildCommands[command.guild].set(command.data.name, command);
                 else client.interactions.guildCommands[command.guild] = new Collection().set(command.data.name, command);
             } else client.interactions.commands.set(command.data.name, command);
 
@@ -95,7 +95,7 @@ readdir('./interactions/commands/message', (error, files = []) => { //Message Co
             const command = require(`./interactions/commands/message/${file}`);
 
             if (command.guild) {
-                if (client.interactions.guildCommands[command.guild]) interactions.guildCommands[command.guild].set(command.data.name, command);
+                if (client.interactions.guildCommands[command.guild]) client.interactions.guildCommands[command.guild].set(command.data.name, command);
                 else client.interactions.guildCommands[command.guild] = new Collection().set(command.data.name, command);
             } else client.interactions.commands.set(command.data.name, command);
 
