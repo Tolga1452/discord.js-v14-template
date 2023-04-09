@@ -1,7 +1,7 @@
 //Packages & Helpful Tools
 
 const { Client, GatewayIntentBits, Collection, Events } = require("discord.js");
-const { readdir } = require("fs");
+const { readdir } = require('node:fs');
 const Logger = require('terminal.xr');
 const { Axios } = require("axios");
 const wait = require('delay');
