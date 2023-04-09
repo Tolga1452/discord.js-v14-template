@@ -32,15 +32,10 @@ var shard = client.shard.ids[0];
 
 client.interactions = {
     commands: new Collection(),
-    guildCommands: {},
-    components: {
-        buttons: new Collection(),
-        selectMenus: new Collection()
-    },
-    modals: new Collection()
+    guildCommands: {}
 };
 
-readdir('./interactions/commands/slash', (error, files = []) => { //Slash Commands
+readdir('./interactions/slash', (error, files = []) => { //Slash Commands
     if (error) logger.error(`[Shard ${shard}] [InterationLoader/SlashCommands] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/SlashCommands] Loading ${files.length} slash commands...`);
@@ -48,7 +43,7 @@ readdir('./interactions/commands/slash', (error, files = []) => { //Slash Comman
 
     files.forEach(file => {
         try {
-            const command = require(`./interactions/commands/slash/${file}`);
+            const command = require(`./interactions/slash/${file}`);
 
             if (command.guild) {
                 if (client.interactions.guildCommands[command.guild]) client.interactions.guildCommands[command.guild].set(command.data.name, command);
@@ -62,7 +57,7 @@ readdir('./interactions/commands/slash', (error, files = []) => { //Slash Comman
     });
 });
 
-readdir('./interactions/commands/user', (error, files = []) => { //User Commands
+readdir('./interactions/user', (error, files = []) => { //User Commands
     if (error) logger.error(`[Shard ${shard}] [InterationLoader/UserCommands] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/UserCommands] Loading ${files.length} user commands...`);
@@ -70,7 +65,7 @@ readdir('./interactions/commands/user', (error, files = []) => { //User Commands
 
     files.forEach(file => {
         try {
-            const command = require(`./interactions/commands/user/${file}`);
+            const command = require(`./interactions/user/${file}`);
 
             if (command.guild) {
                 if (client.interactions.guildCommands[command.guild]) client.interactions.guildCommands[command.guild].set(command.data.name, command);
@@ -84,7 +79,7 @@ readdir('./interactions/commands/user', (error, files = []) => { //User Commands
     });
 });
 
-readdir('./interactions/commands/message', (error, files = []) => { //Message Commands
+readdir('./interactions/message', (error, files = []) => { //Message Commands
     if (error) logger.error(`[Shard ${shard}] [InterationLoader/MessageCommands] ${error.stack ?? error}`);
 
     if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/MessageCommands] Loading ${files.length} message commands...`);
@@ -92,7 +87,7 @@ readdir('./interactions/commands/message', (error, files = []) => { //Message Co
 
     files.forEach(file => {
         try {
-            const command = require(`./interactions/commands/message/${file}`);
+            const command = require(`./interactions/message/${file}`);
 
             if (command.guild) {
                 if (client.interactions.guildCommands[command.guild]) client.interactions.guildCommands[command.guild].set(command.data.name, command);
@@ -102,63 +97,6 @@ readdir('./interactions/commands/message', (error, files = []) => { //Message Co
             logger.success(`[Shard ${shard}] [InterationLoader/MessageCommands] ${command.data.name} message command loaded`);
         } catch (error) {
             logger.error(`[Shard ${shard}] [InterationLoader/MessageCommands/${file}] ${error.stack ?? error}`);
-        };
-    });
-});
-
-readdir('./interactions/components/buttons', (error, files = []) => { //Button Components
-    if (error) logger.error(`[Shard ${shard}] [InterationLoader/ButtonComponents] ${error.stack ?? error}`);
-
-    if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/ButtonComponents] Loading ${files.length} button components...`);
-    else logger.warn(`[Shard ${shard}] [InterationLoader/ButtonComponents] Your bot has not any button components`);
-
-    files.forEach(file => {
-        try {
-            const component = require(`./interactions/components/buttons/${file}`);
-
-            client.interactions.components.buttons.set(component.id, component);
-
-            logger.success(`[Shard ${shard}] [InterationLoader/ButtonComponents] ${component.id} button component loaded`);
-        } catch (error) {
-            logger.error(`[Shard ${shard}] [InterationLoader/ButtonComponents/${file}] ${error.stack ?? error}`);
-        };
-    });
-});
-
-readdir('./interactions/components/selectMenus', (error, files = []) => { //Select Menu Components
-    if (error) logger.error(`[Shard ${shard}] [InterationLoader/SelectMenuComponents] ${error.stack ?? error}`);
-
-    if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/SelectMenuComponents] Loading ${files.length} select menu components...`);
-    else logger.warn(`[Shard ${shard}] [InterationLoader/SelectMenuComponents] Your bot has not any select menu components`);
-
-    files.forEach(file => {
-        try {
-            const component = require(`./interactions/components/selectMenus/${file}`);
-
-            client.interactions.components.selectMenus.set(component.id, component);
-
-            logger.success(`[Shard ${shard}] [InterationLoader/SelectMenuComponents] ${component.id} select menu component loaded`);
-        } catch (error) {
-            logger.error(`[Shard ${shard}] [InterationLoader/SelectMenuComponents/${file}] ${error.stack ?? error}`);
-        };
-    });
-});
-
-readdir('./interactions/modals', (error, files = []) => { //Modals
-    if (error) logger.error(`[Shard ${shard}] [InterationLoader/Modals] ${error.stack ?? error}`);
-
-    if (files.length > 0) logger.info(`[Shard ${shard}] [InterationLoader/Modals] Loading ${files.length} modals...`);
-    else logger.warn(`[Shard ${shard}] [InterationLoader/Modals] Your bot has not any modals`);
-
-    files.forEach(file => {
-        try {
-            const component = require(`./interactions/modals/${file}`);
-
-            client.interactions.components.selectMenus.set(component.id, component);
-
-            logger.success(`[Shard ${shard}] [InterationLoader/Modals] ${component.id} modal loaded`);
-        } catch (error) {
-            logger.error(`[Shard ${shard}] [InterationLoader/Modals/${file}] ${error.stack ?? error}`);
         };
     });
 });
@@ -216,32 +154,5 @@ client
 
             if (command) command.autocomplete(interaction, client);
             else logger.error(`[Shard ${shard}] [Events/InteractionCreate/Autocomplete] ${name} command could not found`);
-        } else if (interaction.isMessageComponent()) {
-            let args = interaction.customId.split('-');
-            let id = args[0];
-
-            args = args.filter(arg => arg !== id);
-
-            if (interaction.isButton()) {
-                let component = client.interactions.components.buttons.get(id);
-
-                if (component) component.execute(interaction, args, client);
-                else logger.error(`[Shard ${shard}] [Events/InteractionCreate/Button] ${id} button could not found`);
-            } else if (interaction.isSelectMenu()) {
-                let component = client.interactions.components.selectMenus.get(id);
-
-                if (component) component.execute(interaction, args, client);
-                else logger.error(`[Shard ${shard}] [Events/InteractionCreate/SelectMenu] ${id} select menu could not found`);
-            };
-        } else if (interaction.isModalSubmit()) {
-            let args = interaction.customId.split('-');
-            let id = args[0];
-
-            args = args.filter(arg => arg !== id);
-
-            let modal = client.interactions.modals.get(id);
-
-            if (modal) modal.execute(interaction, args, client);
-            else logger.error(`[Shard ${shard}] [Events/InteractionCreate/Modal] ${id} modal could not found`);
         };
     });
